@@ -9,6 +9,7 @@ import { ContainerHome } from "../Home/styles";
 import {
   BodyHomeLess,
   BodyMissing,
+  BtnEditDelete,
   CardHomeLess,
   DirectionsBottom,
   DirectionsTop,
@@ -112,7 +113,7 @@ export default function HomeLess() {
                             {" "}
                             <span> Data: </span> {data.date}
                           </li>
-                          <div>
+                          <BtnEditDelete>
                             <button onClick={() => {
                               setEdit(data)
                               setIsEdit(true)
@@ -124,7 +125,7 @@ export default function HomeLess() {
                               deleteHomeless(data)
                             }}>{<BiTrash />}
                             </button>
-                          </div>
+                          </BtnEditDelete>
                         </ul>
                       </figcaption>
                     </figure>

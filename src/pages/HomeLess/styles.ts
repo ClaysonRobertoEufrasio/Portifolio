@@ -135,8 +135,9 @@ export const BodyMissing = styled.ul`
   border-radius: 6px;
   margin-top: 20px;
   padding-bottom: 20px;
+  padding-left: 17px;
 
-  @media(max-width: 600px) {
+  @media(max-width: 647px) {
     flex-wrap: nowrap;
     overflow-y: auto;
     justify-content: space-between;
@@ -202,5 +203,19 @@ export const CardHomeLess = styled.li`
   @media(max-width: 600px) {
     margin-right: 20px;
   }
+`
+export const BtnEditDelete = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 
+  button {
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+
+    &:hover {
+      background-color: #b0b0e7;
+    }
+  }
 `

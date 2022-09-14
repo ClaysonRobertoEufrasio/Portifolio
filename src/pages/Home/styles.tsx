@@ -206,7 +206,7 @@ export const CartCoat = styled.li`
 
   @media(max-width: 1220px) {
     width: 50%;
-    height: 50%;
+    height: 200px;
   }
 
   @media(max-width: 600px) {
@@ -218,23 +218,22 @@ export const CartCoat = styled.li`
 export const CartInstitution = styled(CartCoat)`
   background-color: var(--default-purple);
 
-  :hover{
-    transform: scale(1.1);
-  }
+ 
 `
 
 export const CartProjects = styled(CartCoat)`
   background-color: #F09016;
-
-  :hover{
-    transform: scale(1.1);
+  &:hover {
+    transform: scale(1.07) translateX(-20px);
   }
+  
 `
 
 export const CartSearch = styled(CartCoat)`
   background-color: #4BD18E;
 
-  :hover{
-    transform: scale(1.1) translateX(-20px);
+  &:hover {
+    transform: scale(1.07) translateX(-20px);
   }
+  
 `
