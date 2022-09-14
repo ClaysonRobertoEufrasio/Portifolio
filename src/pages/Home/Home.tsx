@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { useContext } from "react";
 
 import {
   BodyCart,
@@ -12,14 +13,12 @@ import {
   LegendImageHomeless,
   Message,
 } from "./styles";
-
 import imgHomeless from "../../img/homeless.png";
 import Header from "../../components/Header/Header";
 import imgArrow from "../../img/Arrow6.png";
 import AnimatedPage from "../../components/AnimatedPage";
 import Footer from "../../components/Footer/Footer";
 import ResetPage from "../../components/AboutTeam/ResetPage";
-import { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext/AuthContext";
 
 export default function Home() {

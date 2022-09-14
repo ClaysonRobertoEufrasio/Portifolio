@@ -44,7 +44,7 @@ function ModalEditHomeless() {
           <input
             type="text"
             id="description"
-            placeholder="Idade a ser alterada"
+            placeholder="Descrição a ser alterada"
             {...register("description")}
           />
         </div>

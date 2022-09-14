@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { BsSearch } from "react-icons/bs";
 import { GrEdit, GrNext, GrPrevious } from "react-icons/gr";
 import { AuthContext } from "../../contexts/authContext/AuthContext";
+import { Link } from "react-router-dom";
+import { BiTrash } from "react-icons/bi";
 
 import { ContainerHome } from "../Home/styles";
 import {
@@ -15,13 +17,10 @@ import {
   Search,
 } from "./styles";
 import Header from "../../components/Header/Header";
-
 import imgTeste from "../../img/people01.jpg";
 import Footer from "../../components/Footer/Footer";
 import ResetPage from "../../components/AboutTeam/ResetPage";
 import AnimatedPage from "../../components/AnimatedPage";
-import { Link } from "react-router-dom";
-import { BiTrash } from "react-icons/bi";
 import ModalEditHomeless from "../../components/ModalEditHomeless/ModalEditHomeless";
 
 export default function HomeLess() {
@@ -114,15 +113,17 @@ export default function HomeLess() {
                             <span> Data: </span> {data.date}
                           </li>
                           <div>
-                          <button onClick={() => {
+                            <button onClick={() => {
                               setEdit(data)
                               setIsEdit(true)
-                            }}>{<GrEdit />}</button>
-                          <button onClick={() => {
-                            setDel(data) 
-                            deleteHomeless(data)
-                          }}
-                            >{<BiTrash />}</button>
+                              }}>{<GrEdit />}
+                            </button>
+                          
+                            <button onClick={() => {
+                              setDel(data) 
+                              deleteHomeless(data)
+                            }}>{<BiTrash />}
+                            </button>
                           </div>
                         </ul>
                       </figcaption>
