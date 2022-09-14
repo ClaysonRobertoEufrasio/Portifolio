@@ -3,6 +3,7 @@ import { IHomeless} from "../../pages/DashBoard/DashBoard";
 import api from "../../server/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { IRegisterPerson } from "../../components/ModalRegister/ModalRegister";
 
 interface IUserConstext {
   isLogin: boolean;
@@ -13,16 +14,18 @@ interface IUserConstext {
   isNextDisabled: boolean;
   isGoBackDisabled: boolean;
   isEdit: boolean;
-  user: IHomeless | any;
+  user: IRegisterPerson | any;
+  isDel: boolean;
 
   setIsRegister: (prevState: boolean) => boolean | void;
   setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  setDel: React.Dispatch<React.SetStateAction<IHomeless>>;
   setIsLogin: (prevState: boolean) => boolean | void;
   setIsModal: (prevState: boolean) => boolean | void;
   setSearchFor: React.Dispatch<React.SetStateAction<string>>;
   next(): void;
   goBack(): void;
-  deleteHomeless(user: IHomeless): void;
+  deleteHomeless(del: IHomeless): void
   editHomeless(data: IHomeless): void;
   setEdit: React.Dispatch<React.SetStateAction<IHomeless>>;
   search(): void;
@@ -48,6 +51,9 @@ export default function AuthProvider({ children }: IChildrenProps) {
   const [user, setUser] = useState({});
   const [edit, setEdit] = useState<IHomeless>({} as IHomeless)
   const [isEdit, setIsEdit] = useState(false)
+  const [del, setDel] = useState<IHomeless>({} as IHomeless)
+  const [isDel] = useState(false)
+  const [homeLess, setHomeLess] = useState<IHomeless[]>([]);
 
   const navigate = useNavigate();
 
@@ -62,7 +68,7 @@ export default function AuthProvider({ children }: IChildrenProps) {
       .then((res) => {
         setHomeLess(res.data);
       });
-  }, [searchFor, nextPage, deleteHomeless]);
+  }, [searchFor, nextPage, setHomeLess, isEdit,del]);
 
   useEffect(() => {
     const userId = localStorage.getItem("@userId");
@@ -77,7 +83,6 @@ export default function AuthProvider({ children }: IChildrenProps) {
     const token = localStorage.getItem("@TOKEN");
     token ? setIsLogin(true) : setIsLogin(false);
   }, []);
-  const [homeLess, setHomeLess] = useState<IHomeless[]>([]);
 
   function next() {
     api
@@ -137,14 +142,14 @@ export default function AuthProvider({ children }: IChildrenProps) {
     }, 2000);
   }
 
-  function deleteHomeless(user: IHomeless) {
+  function deleteHomeless(del: IHomeless) {
     const token = localStorage.getItem("@TOKEN")
     if (token) {
-      api.delete(`database/${user.id}`)
-      toast.success("Excluido com sucesso", {
-        autoClose: 1500,
-        toastId: customId,
-      })
+      api.delete(`database/${del.id}`)
+        toast.success("Excluido com sucesso", {
+          autoClose: 1500,
+          toastId: customId,
+        })
     } else {
       toast.error(`Necessario login`)
     }
@@ -155,14 +160,16 @@ export default function AuthProvider({ children }: IChildrenProps) {
 
     if (token) {
       api.patch(`database/${edit.id}`, data)
-      toast.success("Editado com sucesso", {
-        autoClose: 1500,
-        toastId: customId,
+      .then((res) => {
+        toast.success("Editado com sucesso", {
+          autoClose: 1500,
+          toastId: customId,
+        })
+        setIsEdit(false)
       })
     } else {
       toast.error(`Necessario login`)
     }
-    setIsEdit(false)
   }
 
   return (
@@ -177,8 +184,10 @@ export default function AuthProvider({ children }: IChildrenProps) {
         isRegister,
         user,
         isEdit,
+        isDel,
 
         setIsEdit,
+        setDel,
         setEdit,
         setIsRegister,
         setIsLogin,

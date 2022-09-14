@@ -32,6 +32,7 @@ export default function HomeLess() {
     isEdit,
 
     setEdit,
+    setDel,
     setIsEdit,
     search,
     setSearchFor,
@@ -117,7 +118,11 @@ export default function HomeLess() {
                               setEdit(data)
                               setIsEdit(true)
                             }}>{<GrEdit />}</button>
-                          <button onClick={() => deleteHomeless(data)}>{<BiTrash />}</button>
+                          <button onClick={() => {
+                            setDel(data) 
+                            deleteHomeless(data)
+                          }}
+                            >{<BiTrash />}</button>
                           </div>
                         </ul>
                       </figcaption>
