@@ -1,4 +1,4 @@
-import { ContainerModal, DivLinks, DivMatriz, DivSocials } from "./styles";
+import { CgProfile } from "react-icons/cg";
 import {
   AiOutlineYoutube,
   AiOutlineFacebook,
@@ -16,8 +16,9 @@ import { TbHeartHandshake } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { IoIosPeople } from "react-icons/io";
 import { useContext } from "react";
+
+import { ContainerModal, DivLinks, DivMatriz, DivSocials } from "./styles";
 import { AuthContext } from "../../contexts/authContext/AuthContext";
-import { CgProfile } from "react-icons/cg";
 import ResetPage from "../AboutTeam/ResetPage";
 
 export default function Menu() {
@@ -71,29 +72,29 @@ export default function Menu() {
         </DivMatriz>
 
         <div>
-          <Link to="/home" replace>
+          <Link to="/home" replace onClick={() => setIsModal(false)}>
             <BiHome />
             Home
           </Link>
-          <Link to="/sobrenos" replace>
+          <Link to="/sobrenos" replace onClick={() => setIsModal(false)}>
             <IoIosPeople />
             Quem Somos
           </Link>
-          <Link to="/campanhadoagasalho" replace>
+          <Link to="/campanhadoagasalho" replace onClick={() => setIsModal(false)}>
             <TbHeartHandshake />
             Projetos
           </Link>
-          <Link to="/pesquisadesaparecidos" replace>
+          <Link to="/pesquisadesaparecidos" replace onClick={() => setIsModal(false)}>
             <BiSearchAlt />
             Pesquisar Pessoa
           </Link>
-          <Link to="/home" replace>
+          <Link to="/home" replace onClick={() => setIsModal(false)}>
             <BiDonateHeart />
             Apoie Agora
           </Link>
           {isLogin ? (
             <>
-              <Link to="/usuario" replace>
+              <Link to="/usuario" replace onClick={() => setIsModal(false)}>
                 {" "}
                 <CgProfile />
                 Perfil{" "}
@@ -105,7 +106,7 @@ export default function Menu() {
               </Link>
             </>
           ) : (
-            <Link to="/login" replace>
+            <Link to="/login" replace onClick={() => setIsModal(false)}>
               <BiLogIn /> Login
             </Link>
           )}
