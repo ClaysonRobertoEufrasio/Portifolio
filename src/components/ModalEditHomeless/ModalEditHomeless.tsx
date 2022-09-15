@@ -20,60 +20,60 @@ function ModalEditHomeless() {
         <h3>Editar <button onClick={() => setIsEdit(false)}>{<AiOutlineClose />}</button></h3>
 
         <div className="input-container">
-          <label htmlFor="">Name</label>
+          <label htmlFor="name">Name</label>
           <input
-            type="text"
             id="name"
+            type="text"
             placeholder="Nome a ser alterado"
             {...register("name")}
           />
         </div>
 
         <div className="input-container">
-          <label htmlFor="">Idade</label>
+          <label htmlFor="age">Idade</label>
           <input
-            type="number"
             id="age"
+            type="number"
             placeholder="Idade a ser alterada"
             {...register("age")}
           />
         </div>
 
         <div className="input-container">
-          <label htmlFor="">Descrição</label>
+          <label htmlFor="description">Descrição</label>
           <input
-            type="text"
             id="description"
+            type="text"
             placeholder="Descrição a ser alterada"
             {...register("description")}
           />
         </div>
 
         <div className="input-container">
-          <label htmlFor="">Local</label>
+          <label htmlFor="location">Local</label>
           <input
-            type="text"
             id="location"
+            type="text"
             placeholder="Localização a ser alterada"
             {...register("location")}
           />
         </div>
 
         <div className="input-container">
-          <label htmlFor="">Data</label>
+          <label htmlFor="date">Data</label>
           <input
-            type="date"
             id="date"
+            type="date"
             placeholder="Data a ser alterada"
             {...register("date")}
           />
         </div>
 
         <div className="input-container">
-          <label htmlFor="">Voluntário</label>
+          <label htmlFor="volunter">Voluntário</label>
           <input
-            type="text"
             id="volunteer"
+            type="text"
             placeholder="Voluntário a ser alterada"
             {...register("volunteer")}
           />

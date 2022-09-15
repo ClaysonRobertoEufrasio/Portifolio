@@ -47,36 +47,41 @@ export default function CardUsuario() {
           ) : (
             <ButtonEditar onClick={() => setSave(true)}>Editar</ButtonEditar>
           )}
-          Nome Instituição:{" "}
+          <label htmlFor="name"> Nome Instituição:{" "} </label>
           <input
+            id="name"
             type="text"
             placeholder={user.name === "" ? "Não informado" : user.name}
             readOnly={!save && true}
             {...register("name")}
           />
-          CNPJ:{" "}
+          <label htmlFor="cnpj"> CNPJ:{" "} </label>
           <input
+            id="cnpj"
             type="text"
             placeholder={user.cnpj === "" ? "Não informado" : user.cnpj}
             readOnly={!save && true}
             {...register("cnpj")}
           />
-          Endereço:{" "}
+          <label htmlFor="adress"> Endereço:{" "} </label>
           <input
+            id="adress"
             type="text"
             placeholder={user.adress === "" ? "Não informado" : user.adress}
             readOnly={!save && true}
             {...register("adress")}
           />
-          Telefone:{" "}
+          <label htmlFor="phone"> Telefone:{" "} </label>
           <input
+            id="phone"
             type="text"
             placeholder={user.phone === "" ? "Não informado" : user.phone}
             readOnly={!save && true}
             {...register("phone")}
           />
-          Email:{" "}
+          <label htmlFor="email"> Email:{" "} </label>
           <input
+            id="email"
             type="text"
             placeholder={user.email === "" ? "Não informado" : user.email}
             readOnly={!save && true}

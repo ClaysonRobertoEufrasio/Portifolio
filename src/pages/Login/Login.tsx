@@ -73,18 +73,18 @@ export default function Login() {
             <DivBack>
               <form onSubmit={handleSubmit(onSubmitFunction)}>
                 <h3>Login</h3>
-                <label>Email</label>
+                <label htmlFor="email">Email</label>
                 <input
-                  type="email"
                   id="email"
+                  type="email"
                   placeholder="Digite seu email"
                   required
                   {...register("email")}
                 />
-                <label>Senha</label>
+                <label htmlFor="password">Senha</label>
                 <input
-                  type="password"
                   id="password"
+                  type="password"
                   placeholder="Digite sua senha"
                   {...register("password")}
                 />

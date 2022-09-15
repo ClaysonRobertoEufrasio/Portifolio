@@ -13,7 +13,7 @@ import {
   BiLogOut,
 } from "react-icons/bi";
 import { TbHeartHandshake } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoIosPeople } from "react-icons/io";
 import { useContext } from "react";
 
@@ -22,8 +22,10 @@ import { AuthContext } from "../../contexts/authContext/AuthContext";
 import ResetPage from "../AboutTeam/ResetPage";
 
 export default function Menu() {
+  const navigate = useNavigate()
   const { isLogin, setIsModal, logout } = useContext(AuthContext);
-  const handleOutSideClick = (e: any) => {
+  
+  function handleOutSideClick(e: any) {
     if (e.target.id === "modalMenu") {
       setIsModal(false);
     }
@@ -88,7 +90,15 @@ export default function Menu() {
             <BiSearchAlt />
             Pesquisar Pessoa
           </Link>
-          <Link to="/home" replace onClick={() => setIsModal(false)}>
+          <Link to="" replace onClick={() => {
+            isLogin
+            ? 
+            navigate('/usuario') 
+            : 
+            navigate('/login')
+            ;
+            setIsModal(false)
+          }}>
             <BiDonateHeart />
             Apoie Agora
           </Link>

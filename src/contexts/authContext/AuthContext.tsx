@@ -30,6 +30,7 @@ interface IUserConstext {
   setEdit: React.Dispatch<React.SetStateAction<IHomeless>>;
   search(): void;
   logout(e: any): void;
+  onSubmit(data: IHomeless): void;
 }
 
 interface IChildrenProps {
@@ -55,6 +56,8 @@ export default function AuthProvider({ children }: IChildrenProps) {
   const [isDel] = useState(false)
   const [homeLess, setHomeLess] = useState<IHomeless[]>([]);
 
+  const userId = Number(localStorage.getItem("@userId"));
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -68,7 +71,7 @@ export default function AuthProvider({ children }: IChildrenProps) {
       .then((res) => {
         setHomeLess(res.data);
       });
-  }, [searchFor, nextPage, setHomeLess, isEdit,del]);
+  }, [searchFor, nextPage, setHomeLess, isEdit, del, onSubmit]);
 
   useEffect(() => {
     const userId = localStorage.getItem("@userId");
@@ -172,6 +175,23 @@ export default function AuthProvider({ children }: IChildrenProps) {
     }
   }
 
+  
+  function onSubmit(data: IHomeless) {
+    data.userId = userId;
+
+    api
+      .post("/database", data)
+      .then((res) => {
+        if (res.status === 201) {
+          toast.success("Cadastro realizado");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error(`Ocorreu um erro. Tente novamente.`);
+      });
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -199,6 +219,7 @@ export default function AuthProvider({ children }: IChildrenProps) {
         next,
         search,
         logout,
+        onSubmit
       }}
     >
       {children}

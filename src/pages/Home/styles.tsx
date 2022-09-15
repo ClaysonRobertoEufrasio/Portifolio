@@ -218,6 +218,11 @@ export const CartCoat = styled.li`
 export const CartInstitution = styled(CartCoat)`
   background-color: var(--default-purple);
 
+  &:hover {
+    @media(max-width: 1220px) {
+      transform: scale(1.07) translateX(-20px);
+    }
+  }
  
 `
 
@@ -225,8 +230,11 @@ export const CartProjects = styled(CartCoat)`
   background-color: #F09016;
   &:hover {
     transform: scale(1.07) translateX(-20px);
+    
+    @media(max-width: 1220px) {
+      transform: scale(1.07) translateX(20px);
+    }
   }
-  
 `
 
 export const CartSearch = styled(CartCoat)`
