@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useState, useEffect } from "react";
-import { IHomeless} from "../../pages/DashBoard/DashBoard";
+import { IHomeless } from "../../pages/DashBoard/DashBoard";
 import api from "../../server/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -71,7 +71,7 @@ export default function AuthProvider({ children }: IChildrenProps) {
       .then((res) => {
         setHomeLess(res.data);
       });
-  }, [searchFor, nextPage, setHomeLess, isEdit, del, onSubmit]);
+  }, [searchFor, nextPage, setHomeLess, isEdit, del]);
 
   useEffect(() => {
     const userId = localStorage.getItem("@userId");
@@ -127,9 +127,9 @@ export default function AuthProvider({ children }: IChildrenProps) {
   }
 
   function search() {
-    const dados = homeLess.filter(user => user.name === searchFor )
+    const dados = homeLess.filter(user => user.name === searchFor)
     setHomeLess(dados)
-    }
+  }
 
   function logout(e: any) {
     e.preventDefault();
@@ -149,10 +149,10 @@ export default function AuthProvider({ children }: IChildrenProps) {
     const token = localStorage.getItem("@TOKEN")
     if (token) {
       api.delete(`database/${del.id}`)
-        toast.success("Excluido com sucesso", {
-          autoClose: 1500,
-          toastId: customId,
-        })
+      toast.success("Excluido com sucesso", {
+        autoClose: 1500,
+        toastId: customId,
+      })
     } else {
       toast.error(`Necessario login`)
     }
@@ -163,19 +163,18 @@ export default function AuthProvider({ children }: IChildrenProps) {
 
     if (token) {
       api.patch(`database/${edit.id}`, data)
-      .then((res) => {
-        toast.success("Editado com sucesso", {
-          autoClose: 1500,
-          toastId: customId,
+        .then((res) => {
+          toast.success("Editado com sucesso", {
+            autoClose: 1500,
+            toastId: customId,
+          })
+          setIsEdit(false)
         })
-        setIsEdit(false)
-      })
     } else {
       toast.error(`Necessario login`)
     }
   }
 
-  
   function onSubmit(data: IHomeless) {
     data.userId = userId;
 

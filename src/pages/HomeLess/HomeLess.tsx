@@ -117,11 +117,11 @@ export default function HomeLess() {
                             <button onClick={() => {
                               setEdit(data)
                               setIsEdit(true)
-                              }}>{<GrEdit />}
+                            }}>{<GrEdit />}
                             </button>
-                          
+
                             <button onClick={() => {
-                              setDel(data) 
+                              setDel(data)
                               deleteHomeless(data)
                             }}>{<BiTrash />}
                             </button>

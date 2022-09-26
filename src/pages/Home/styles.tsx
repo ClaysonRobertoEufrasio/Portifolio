@@ -170,6 +170,11 @@ export const CartCoat = styled.li`
     transform: translateX(220px)
     op
   }
+
+  @media(max-width: 600px) {
+    transform: scale(1.07) translateX(0);
+  }
+
 }
   div {
     display: flex;
@@ -211,7 +216,7 @@ export const CartCoat = styled.li`
 
   @media(max-width: 600px) {
     width: 100%;
-    height: 50%;
+    height: 150px;
   }
 `
 
@@ -221,6 +226,10 @@ export const CartInstitution = styled(CartCoat)`
   &:hover {
     @media(max-width: 1220px) {
       transform: scale(1.07) translateX(-20px);
+    }
+
+    @media(max-width: 600px) {
+      transform: scale(1.07) translateX(0);
     }
   }
  
@@ -234,6 +243,10 @@ export const CartProjects = styled(CartCoat)`
     @media(max-width: 1220px) {
       transform: scale(1.07) translateX(20px);
     }
+
+    @media(max-width: 600px) {
+      transform: scale(1.07) translateX(0);
+    }
   }
 `
 
@@ -242,6 +255,10 @@ export const CartSearch = styled(CartCoat)`
 
   &:hover {
     transform: scale(1.07) translateX(-20px);
+
+    @media(max-width: 600px) {
+      transform: scale(1.07) translateX(0);
+    }
   }
   
 `
